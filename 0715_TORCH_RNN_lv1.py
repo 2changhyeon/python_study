@@ -142,18 +142,20 @@ def categoryFromOutput(output):
 
 # 손실함수 RNN 마지막 계층이 LogSoftMax이기때문에, NLLLoss를 사용한다.
 # nn.NLLLoss는 nn.LogSoftmax의 log 결과값에 대한 교차 엔트로피 손실 연산(Cross Entropy Loss|Error)입니다.
-criterion = nn.NLLLoss()
 """
  학습 루프:
-   1. 입력과 목표 Tensor 생성
-   2. 0 로 초기화된 은닉 상태 생성
+   1. input과 목표 Tensor 생성
+   2. 0 로 초기화된 hidden state생성
    3. 각 문자를 읽기
-        - 다음 문자를 위한 은닉 상태 유지
-   4. 목표와 최종 출력 비교
+        - 다음 문자를 위한 hidden state유지
+   4. loss 계산
    5. 역전파
-   6. 출력과 손실 반환 
+   6. output과 loss 반환 
 """
 
+
+
+criterion = nn.NLLLoss()
 learning_rate = 0.005
  # lr을 너무 높게 설정하면 발산할 수 있고, 너무 낮으면 학습이 되지 않을 수 있습니다.
 
